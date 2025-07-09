@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/optional/presets';
+@import '@skeletonlabs/skeleton/themes/cerberus';
+
+@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
+
+[data-floating] {
+	width: max-content;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
