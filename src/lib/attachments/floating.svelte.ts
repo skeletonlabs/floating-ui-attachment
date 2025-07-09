@@ -16,7 +16,7 @@ export class Popover {
 	private floatingElement: HTMLElement | undefined = $state();
 
 	constructor(options?: PopoverOptions) {
-		if (options) this.options = options;
+		if (options) this.options = { ...this.options, ...options };
 		$effect(() => {
 			if (!this.referenceElement || !this.floatingElement) return;
 			return autoUpdate(this.referenceElement, this.floatingElement, this.#updatePosition);
@@ -32,11 +32,13 @@ export class Popover {
 			onmouseover: () => {},
 			onmouseout: () => {}
 		};
+		// If click interaction
 		if (this.options.interaction === 'click') {
 			attrs['onclick'] = () => {
 				this.open = !this.open;
 			};
 		}
+		// If hover interaction
 		if (this.options.interaction === 'hover') {
 			attrs['onclick'] = () => {
 				this.open = !this.open;
